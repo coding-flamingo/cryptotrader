@@ -10,7 +10,7 @@ using System.Text;
 
 namespace CryptoTrader.Services
 {
-    public class BittrexService
+    public class BittrexService : IBittrexService
     {
         private readonly string _key;
         private readonly string _secret;

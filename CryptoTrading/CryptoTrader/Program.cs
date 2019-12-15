@@ -2,12 +2,15 @@
 using System;
 using System.IO;
 using CryptoTrader.Services;
+using CryptoTrader.Tests;
+
 namespace CryptoTrader
 {
     class Program
     {
         static void Main(string[] args)
         {
+            bool test = true;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json");
@@ -17,8 +20,21 @@ namespace CryptoTrader
                 .Build();
             string _key = config["key"];
             string _secret = config["secret"];
-            BittrexService _bittrexService = new BittrexService(_key, _secret);
-            var balance = _bittrexService.GetBalance("BTC");
+            if (test)
+            {
+                DirectoryInfo directory = new DirectoryInfo(@"D:\git\TestFiles\7-26");
+                FileInfo[] files = directory.GetFiles("*.txt"); //Getting Text files
+                foreach (var market in files)
+                {
+                    BittrexServiceTest _bittrexService = new BittrexServiceTest(market.FullName);
+                    //Todo trading Magic
+
+                }
+            }
+            else
+            {
+                BittrexService _bittrexService = new BittrexService(_key, _secret);
+            }
         }
     }
 }
