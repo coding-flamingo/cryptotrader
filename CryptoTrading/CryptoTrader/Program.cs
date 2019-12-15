@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using CryptoTrader.Services;
 using CryptoTrader.Tests;
+using CryptoTrader.Managers;
 
 namespace CryptoTrader
 {
@@ -28,8 +29,15 @@ namespace CryptoTrader
                 {
                     BittrexServiceTest _bittrexService = new BittrexServiceTest(market.FullName);
                     //Todo trading Magic
-
+                    TradingLogicManager tradingManager = new TradingLogicManager(market.FullName, _bittrexService, 78, "PlanningToBuy");
+                    while(_bittrexService.exit == false)
+                    {
+                        tradingManager.CheckOptions();
+                    }
                 }
+                Console.WriteLine("Done :)");
+                Console.ReadLine();
+
             }
             else
             {
