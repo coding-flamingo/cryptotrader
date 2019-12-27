@@ -62,14 +62,14 @@ namespace CryptoTrader.Tests
         {
             sellCount++;
             _USDbalance = quantity * price;
-            return "0";
+            return Guid.NewGuid().ToString();
         }
 
         public string Buy(double price, string market, double quantity)
         {
             buyCount++;
             _ALTBalance = quantity;
-            return "0";
+            return Guid.NewGuid().ToString();
         }
 
         public double GetBalance(string coin)

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using Microsoft.Extensions.Configuration;
 
 namespace InformationMinion
 {
@@ -16,7 +17,8 @@ namespace InformationMinion
             Console.WriteLine("Let's get this party started!!");
             BittrexService _BittrexService = new BittrexService();
             List<MarketsNamesResuts> activeMarkets = _BittrexService.GetActiveMarkets();
-            while(true)
+
+            while (true)
             {
                 foreach (var market in activeMarkets.Where(i => i.MarketName.Contains("USD")))
                 {

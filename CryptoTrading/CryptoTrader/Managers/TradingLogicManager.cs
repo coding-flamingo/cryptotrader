@@ -27,7 +27,7 @@ namespace CryptoTrader.Managers
         CurrentPriceModel _LastCurrentPrice;
         private double _TempTransactionPrice = 0;
 
-        public TradingLogicManager(string market, IBittrexService bittrexService, double lasttransaction, string orderStatus)
+        public TradingLogicManager(string market, IBittrexService bittrexService, string orderStatus)
         {
             _BitrexService = bittrexService;
             _Market = market;
